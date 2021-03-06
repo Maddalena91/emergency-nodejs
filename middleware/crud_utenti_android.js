@@ -1,7 +1,6 @@
-const UtentiApp = require('../model/user-android')
+const UtentiApp = require('../model/utenti_android')
 module.exports = {
     createUserAndroid: async (user) => {
-        console.log(user)
         const utente = new UtentiApp({
             nome: user.nome,
             cognome: user.cognome,
@@ -33,7 +32,7 @@ module.exports = {
         try {
             let filterName = Object.keys(filter)
             if(filterName !== undefined){
-                const result = await UtentiApp.findOne({ filterName : filter[filterName] });
+                const result = await UtentiApp.find(filter);
                 return result;
             }else{
                 const result = await UtentiApp.find();

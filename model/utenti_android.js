@@ -21,17 +21,11 @@ const utentiSchema = new Schema({
                 type: String, 
                 required:true
             },
-            data_registrazione:  {
-                type: Date, 
-                required:true
-            },
+            ultimo_GPS:String,
+            data_registrazione:Date,
             data_modifica:Date
-            /*creator:{
-                type: Schema.Types.ObjectId,
-                ref: 'Utenti_App'
-            } per tabella gps*/
 },
 {
     versionKey: false // You should be aware of the outcome after set to false
 }); 
-module.exports = mongoose.model('UtentiApp',utentiSchema);
+module.exports = mongoose.model('utenti_android',utentiSchema);
