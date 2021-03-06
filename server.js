@@ -13,19 +13,25 @@ app.use(bodyParser.json())
 mongoose.connect(credenzialiDB.url, {"auth": {"authSource": "admin"
     }, user: credenzialiDB.username, pass: credenzialiDB.password, useNewUrlParser: true ,useUnifiedTopology: true})
 .then(res => {
+    // GET method route
+    app.get('/userapp', async function  (req,res){
+        let resp = await userapp.getUserAndroid(req.body,res)
+        res.send(resp);
+    });
+
     // POST method route
-    app.post('/userapp', function (req, res) {
-        let resp = userapp.createUserAndroid(req.body)
+    app.post('/userapp', async function (req, res) {
+        let resp = await userapp.createUserAndroid(req.body)
         res.send(resp);
     });
     // PUT method route
-    app.put('/userapp', function (req, res) {
-        let resp = userapp.updateUserAndroid(req.body)
+    app.put('/userapp', async function (req, res) {
+        let resp = await userapp.updateUserAndroid(req.body)
         res.send(resp);
     });
     // DELETE method route
-    app.delete('/userapp', function (req, res) {
-        let resp = userapp.cancelUserAndroid(req.body)
+    app.delete('/userapp', async function (req, res) {
+        let resp = await userapp.cancelUserAndroid(req.body)
         res.send(resp);
     });
 
